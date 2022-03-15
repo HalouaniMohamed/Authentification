@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form id="registration-form">
+    <form id="registration-form" action="/api/register" method="POST">
         <input type="text" id="username" placeholder="Username" />
         <input type="email" id="email" placeholder="Email" />
         <input type="password" id="password" placeholder="Password" />
@@ -22,13 +22,13 @@
 
         async function registerUser(event){
             event.preventDefault()
-            const username = document.getElementById('username').calue
-            const email = document.getElementById('email').calue
-            const password = document.getElementById('password').calue
-            const passwordConfirm = document.getElementById('username').calue
+            const username = document.getElementById('username').value
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+            const passwordConfirm = document.getElementById('username').value
 
-            await fetch('/api/register', {
-                method: 'Post',
+            const result = await fetch('/api/register', {
+                method: 'POST',
                 headers: {
                     'Content-type' : 'applicatio/json'
                 },
