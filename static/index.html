@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="registration-form">
+        <input type="text" id="username" placeholder="Username" />
+        <input type="email" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <input type="password" id="password-confirm" placeholder="Confirm password" />
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <script>
+        const form = document.getElementById('registration-form')
+        form.addEventListener('submit', registerUser)
+
+        async function registerUser(event){
+            event.preventDefault()
+            const username = document.getElementById('username').calue
+            const email = document.getElementById('email').calue
+            const password = document.getElementById('password').calue
+            const passwordConfirm = document.getElementById('username').calue
+
+            await fetch('/api/register', {
+                method: 'Post',
+                headers: {
+                    'Content-type' : 'applicatio/json'
+                },
+                body : JSON.stringify({
+                    username, email, password, passwordConfirm
+                })
+            }).then(res => res.json())
+        }
+    </script>
+</body>
+</html>
