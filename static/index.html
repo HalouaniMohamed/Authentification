@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script defer src="./script.js"></script>
 </head>
 <body>
     <form id="registration-form" action="/api/register" method="POST">
@@ -14,29 +15,5 @@
         <input type="password" id="password-confirm" placeholder="Confirm password" />
         <button type="submit">Submit</button>
     </form>
-
-
-    <script>
-        const form = document.getElementById('registration-form')
-        form.addEventListener('submit', registerUser)
-
-        async function registerUser(event){
-            event.preventDefault()
-            const username = document.getElementById('username').value
-            const email = document.getElementById('email').value
-            const password = document.getElementById('password').value
-            const passwordConfirm = document.getElementById('username').value
-
-            const result = await fetch('/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-type' : 'applicatio/json'
-                },
-                body : JSON.stringify({
-                    username, email, password, passwordConfirm
-                })
-            }).then(res => res.json())
-        }
-    </script>
 </body>
 </html>

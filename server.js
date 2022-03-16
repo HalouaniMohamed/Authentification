@@ -3,6 +3,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 // const User = require('./model/user')
+const bcrypt = require('bcryptjs')
 const app = express()
 const port = 5000
 
@@ -17,6 +18,10 @@ app.use('/', express.static(path.join(__dirname, 'static')))
 
 app.post('/api/register', async (req, res) => {
   console.log(req.body)
+  const { username, email, password } = req.body
+  // const salt = bcrypt.genSaltSync(10)
+  // const hash = bcrypt.hashSync(password, salt)
+  // console.log(hash)
   res.json({ status: 'OK' })
 })
 
